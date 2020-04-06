@@ -1,10 +1,10 @@
 pipeline {
 
   environment {
-    PROJECT = "sequislife-pilot"
-    APP_NAME = "sample"
+    PROJECT = "pro1-265115"
+    APP_NAME = "nodejs"
     FE_SVC_NAME = "${APP_NAME}"
-    CLUSTER = "cluster-1"
+    CLUSTER = "jenkins"
     CLUSTER_ZONE = "us-central1-c"
     IMAGE_TAG = "gcr.io/${PROJECT}/${APP_NAME}:latest"
     JENKINS_CRED = "${PROJECT}"
@@ -25,18 +25,14 @@ spec:
   # Use service account that can deploy to all namespaces
   
   containers:
-  - name: nodejs
-    image: node:8
+  - name: node
+    image: us.gcr.io/pro1-265115/nodejs
     command:
     - cat
     tty: true
-  - name: gcloud
-    image: 
-    command:
-    - cat
-    tty: true
+
   - name: helm
-    image:
+    image: us.gcr.io/pro1-265115/helm3
     command:
     - cat
     tty: true
@@ -50,6 +46,6 @@ spec:
         sh 'npm install'
       }
     }
-   }
- }  
-     
+  }
+ }
+}
