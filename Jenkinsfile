@@ -42,8 +42,7 @@ spec:
   }
     stages {    
     stage('Install dependencies') {
-      steps {
-        withNPM(npmrcConfig: 'my-custom-nprc') 
+      steps { 
         sh 'npm install'
       }
     }
